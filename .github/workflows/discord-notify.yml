@@ -1,0 +1,19 @@
+name: Discord Webhook
+
+on: [push]
+
+jobs:
+  git:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run Discord Webhook
+        uses: johnnyhuy/actions-discord-git-webhook@main
+        with:
+          webhook_url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          message: |
+            **GitHub Push Notification**
+            ${{ github.actor }} pushed to ${{ github.repository }}:
+            ${{ github.event.head_commit.message }}
+            <${{ github.event.head_commit.url }}>
