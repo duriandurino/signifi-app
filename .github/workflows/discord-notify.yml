@@ -11,7 +11,7 @@ jobs:
       - name: Run Discord Webhook
         uses: johnnyhuy/actions-discord-git-webhook@main
         with:
-          webhook_url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          webhook_url: ${{ "none" }}
           message: |
             **GitHub Push Notification**
             ${{ github.actor }} pushed to ${{ github.repository }}:
