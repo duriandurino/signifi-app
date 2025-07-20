@@ -1,110 +1,281 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import React from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  SafeAreaView,
+  TouchableOpacity,
+  ScrollView,
+  Image,
+} from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 
-import { Collapsible } from '@/components/Collapsible';
-import { ExternalLink } from '@/components/ExternalLink';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { IconSymbol } from '@/components/ui/IconSymbol';
+export default function CoursesScreen() {
+  const courses = [
+    {
+      id: 1,
+      title: 'FSL Alphabet',
+      description: 'Learn the fundamentals of French Sign Language alphabet',
+      progress: 54,
+      color: '#e91e63',
+      lessons: 26,
+    },
+    {
+      id: 2,
+      title: 'Basic Greetings',
+      description: 'Master common greetings and introductions',
+      progress: 23,
+      color: '#2196f3',
+      lessons: 15,
+    },
+    {
+      id: 3,
+      title: 'Numbers & Counting',
+      description: 'Learn to sign numbers from 1 to 100',
+      progress: 0,
+      color: '#ff9800',
+      lessons: 20,
+    },
+    {
+      id: 4,
+      title: 'Family & Relationships',
+      description: 'Signs for family members and relationships',
+      progress: 0,
+      color: '#4caf50',
+      lessons: 18,
+    },
+    {
+      id: 5,
+      title: 'Daily Activities',
+      description: 'Common activities and daily routines',
+      progress: 0,
+      color: '#9c27b0',
+      lessons: 24,
+    },
+    {
+      id: 6,
+      title: 'Colors & Shapes',
+      description: 'Visual concepts and descriptions',
+      progress: 0,
+      color: '#ff5722',
+      lessons: 12,
+    },
+  ];
 
-export default function TabTwoScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
-      headerImage={
-        <IconSymbol
-          size={310}
-          color="#808080"
-          name="chevron.left.forwardslash.chevron.right"
-          style={styles.headerImage}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Explore</ThemedText>
-      </ThemedView>
-      <ThemedText>This app includes example code to help you get started.</ThemedText>
-      <Collapsible title="File-based routing">
-        <ThemedText>
-          This app has two screens:{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/explore.tsx</ThemedText>
-        </ThemedText>
-        <ThemedText>
-          The layout file in <ThemedText type="defaultSemiBold">app/(tabs)/_layout.tsx</ThemedText>{' '}
-          sets up the tab navigator.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/router/introduction">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Android, iOS, and web support">
-        <ThemedText>
-          You can open this project on Android, iOS, and the web. To open the web version, press{' '}
-          <ThemedText type="defaultSemiBold">w</ThemedText> in the terminal running this project.
-        </ThemedText>
-      </Collapsible>
-      <Collapsible title="Images">
-        <ThemedText>
-          For static images, you can use the <ThemedText type="defaultSemiBold">@2x</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
-          different screen densities
-        </ThemedText>
-        <Image source={require('@/assets/images/react-logo.png')} style={{ alignSelf: 'center' }} />
-        <ExternalLink href="https://reactnative.dev/docs/images">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Custom fonts">
-        <ThemedText>
-          Open <ThemedText type="defaultSemiBold">app/_layout.tsx</ThemedText> to see how to load{' '}
-          <ThemedText style={{ fontFamily: 'SpaceMono' }}>
-            custom fonts such as this one.
-          </ThemedText>
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/versions/latest/sdk/font">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Light and dark mode components">
-        <ThemedText>
-          This template has light and dark mode support. The{' '}
-          <ThemedText type="defaultSemiBold">useColorScheme()</ThemedText> hook lets you inspect
-          what the user&apos;s current color scheme is, and so you can adjust UI colors accordingly.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Animations">
-        <ThemedText>
-          This template includes an example of an animated component. The{' '}
-          <ThemedText type="defaultSemiBold">components/HelloWave.tsx</ThemedText> component uses
-          the powerful <ThemedText type="defaultSemiBold">react-native-reanimated</ThemedText>{' '}
-          library to create a waving hand animation.
-        </ThemedText>
-        {Platform.select({
-          ios: (
-            <ThemedText>
-              The <ThemedText type="defaultSemiBold">components/ParallaxScrollView.tsx</ThemedText>{' '}
-              component provides a parallax effect for the header image.
-            </ThemedText>
-          ),
-        })}
-      </Collapsible>
-    </ParallaxScrollView>
+    <SafeAreaView style={styles.container}>
+      <StatusBar style="dark" />
+      
+      <ScrollView style={styles.content}>
+        <View style={styles.header}>
+          <Text style={styles.title}>Courses</Text>
+          <Text style={styles.subtitle}>Explore available learning modules</Text>
+        </View>
+
+        <View style={styles.filterSection}>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            <TouchableOpacity style={[styles.filterButton, styles.activeFilter]}>
+              <Text style={styles.activeFilterText}>All</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.filterButton}>
+              <Text style={styles.filterText}>In Progress</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.filterButton}>
+              <Text style={styles.filterText}>Completed</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.filterButton}>
+              <Text style={styles.filterText}>New</Text>
+            </TouchableOpacity>
+          </ScrollView>
+        </View>
+
+        <View style={styles.coursesSection}>
+          {courses.map((course) => (
+            <TouchableOpacity key={course.id} style={styles.courseCard}>
+              <View style={styles.courseHeader}>
+                <View style={[styles.courseIcon, { backgroundColor: course.color }]}>
+                  <Text style={styles.courseIconText}>📚</Text>
+                </View>
+                <View style={styles.courseInfo}>
+                  <Text style={styles.courseTitle}>{course.title}</Text>
+                  <Text style={styles.courseDescription}>{course.description}</Text>
+                  <Text style={styles.courseLessons}>{course.lessons} lessons</Text>
+                </View>
+              </View>
+              
+              <View style={styles.courseProgress}>
+                <View style={styles.progressBar}>
+                  <View 
+                    style={[
+                      styles.progressFill, 
+                      { width: `${course.progress}%`, backgroundColor: course.color }
+                    ]} 
+                  />
+                </View>
+                <Text style={styles.progressText}>{course.progress}%</Text>
+              </View>
+              
+              <View style={styles.courseActions}>
+                <TouchableOpacity style={[styles.actionButton, styles.primaryButton]}>
+                  <Text style={styles.primaryButtonText}>
+                    {course.progress > 0 ? 'Continue' : 'Start'}
+                  </Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={[styles.actionButton, styles.secondaryButton]}>
+                  <Text style={styles.secondaryButtonText}>Preview</Text>
+                </TouchableOpacity>
+              </View>
+            </TouchableOpacity>
+          ))}
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  headerImage: {
-    color: '#808080',
-    bottom: -90,
-    left: -35,
-    position: 'absolute',
+  container: {
+    flex: 1,
+    backgroundColor: '#f8f9fa',
   },
-  titleContainer: {
+  content: {
+    flex: 1,
+    paddingHorizontal: 20,
+  },
+  header: {
+    paddingTop: 20,
+    paddingBottom: 20,
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 4,
+  },
+  subtitle: {
+    fontSize: 16,
+    color: '#666',
+  },
+  filterSection: {
+    marginBottom: 20,
+  },
+  filterButton: {
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 20,
+    marginRight: 12,
+    backgroundColor: '#e8e8e8',
+  },
+  activeFilter: {
+    backgroundColor: '#4a5568',
+  },
+  filterText: {
+    color: '#666',
+    fontSize: 14,
+    fontWeight: '500',
+  },
+  activeFilterText: {
+    color: 'white',
+    fontSize: 14,
+    fontWeight: '500',
+  },
+  coursesSection: {
+    paddingBottom: 20,
+  },
+  courseCard: {
+    backgroundColor: 'white',
+    borderRadius: 16,
+    padding: 20,
+    marginBottom: 16,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  courseHeader: {
     flexDirection: 'row',
-    gap: 8,
+    alignItems: 'flex-start',
+    marginBottom: 16,
+  },
+  courseIcon: {
+    width: 50,
+    height: 50,
+    borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 16,
+  },
+  courseIconText: {
+    fontSize: 24,
+  },
+  courseInfo: {
+    flex: 1,
+  },
+  courseTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 4,
+  },
+  courseDescription: {
+    fontSize: 14,
+    color: '#666',
+    lineHeight: 20,
+    marginBottom: 4,
+  },
+  courseLessons: {
+    fontSize: 12,
+    color: '#999',
+  },
+  courseProgress: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  progressBar: {
+    flex: 1,
+    height: 6,
+    backgroundColor: '#e8e8e8',
+    borderRadius: 3,
+    marginRight: 12,
+  },
+  progressFill: {
+    height: '100%',
+    borderRadius: 3,
+  },
+  progressText: {
+    fontSize: 12,
+    color: '#666',
+    fontWeight: '500',
+  },
+  courseActions: {
+    flexDirection: 'row',
+    gap: 12,
+  },
+  actionButton: {
+    flex: 1,
+    paddingVertical: 10,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  primaryButton: {
+    backgroundColor: '#4a5568',
+  },
+  secondaryButton: {
+    backgroundColor: '#e8e8e8',
+  },
+  primaryButtonText: {
+    color: 'white',
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  secondaryButtonText: {
+    color: '#666',
+    fontSize: 14,
+    fontWeight: '600',
   },
 });
