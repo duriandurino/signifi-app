@@ -35,11 +35,13 @@ export default function WordleScreen({ navigation }: Props) {
 
         if (current === solution) {
           Alert.alert('🎉 You got it!', '', [
-            { text: 'Home', onPress: () => navigation.goBack() },
+            { text: 'Play again', onPress: () => navigation.reset({ index: 0, routes: [{ name: 'Wordle' }] }) },
+            { text: 'Go Back', onPress: () => navigation.goBack() }
           ]);
         } else if (nextRows.length === MAX_ROWS) {
           Alert.alert(`The word was ${solution}`, '', [
             { text: 'Try again', onPress: () => navigation.reset({ index: 0, routes: [{ name: 'Wordle' }] }) },
+            { text: 'Go Back', onPress: () => navigation.goBack() }
           ]);
         }
       } else if (current.length < WORD_LEN) {

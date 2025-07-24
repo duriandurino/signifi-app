@@ -16,6 +16,18 @@ export default function HomeScreen({ navigation }: Props) {
       >
         <Text style={styles.buttonText}>Play Wordle</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('Handman')}
+      >
+        <Text style={styles.buttonText}>Play Handman</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('FSLBingo')}
+      >
+        <Text style={styles.buttonText}>Play FSL Bingo</Text>
+      </TouchableOpacity>
     </View>
   );
 }
