@@ -34,6 +34,11 @@ export function ThemedText({
 }
 
 const styles = StyleSheet.create({
+  
+  text: {
+    fontFamily: 'Poppins-SemiBold',
+  },
+
   default: {
     fontSize: 16,
     lineHeight: 24,
