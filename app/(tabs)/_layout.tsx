@@ -94,16 +94,7 @@ export default function TabLayout() {
           ),
         }}
       />
-       <Tabs.Screen
-        name="courseDetails"
-        options={{
-          headerShown: false,
-          title: 'Course Details',
-          tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="gearshape.fill" color={color} />
-          ),
-        }}
-      />
+       
       
     </Tabs>
   );

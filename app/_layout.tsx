@@ -13,6 +13,7 @@ export default function RootLayout() {
 
   const [loaded] = useFonts({
     'Poppins-SemiBold': require('../assets/fonts/Poppins-SemiBold.ttf'),
+    'Poppins-Light': require('../assets/fonts/Poppins-Light.ttf'),
   });
 
   // ✅ Always call hooks unconditionally

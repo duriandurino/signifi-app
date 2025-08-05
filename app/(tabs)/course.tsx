@@ -364,13 +364,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   searchButton: {
-    backgroundColor: '#364153',
+    backgroundColor: '#4a5568',
     padding: 10,
     borderRadius: 12,
     marginRight: 6,
   },
   filterSearchButton: {
-    backgroundColor: '#364153',
+    backgroundColor: '#4a5568',
     padding: 10,
     borderRadius: 12,
   },
@@ -456,7 +456,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#e8e8e8',
   },
   activeFilter: {
-    backgroundColor: '#364153',
+    backgroundColor: '#4a5568',
   },
   filterText: {
     color: '#666',
