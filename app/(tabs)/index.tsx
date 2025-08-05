@@ -2,9 +2,9 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import Notification from '../notification';
 
-
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Image,
   SafeAreaView,
@@ -20,6 +20,11 @@ import {
 export default function DashboardScreen() {
   const router = useRouter();
   const navigation = useNavigation();
+  const [isNotificationVisible, setNotificationVisible] = useState(false);
+
+  const toggleNotifications = () => {
+    setNotificationVisible(!isNotificationVisible);
+  };
 
 
   const handleLogout = () => {
@@ -42,7 +47,7 @@ export default function DashboardScreen() {
         <Text style={styles.appTitle}>.</Text>
 
         <View style={styles.headerRight}>
-          <TouchableOpacity style={styles.notificationButton}>
+          <TouchableOpacity onPress={toggleNotifications} style={styles.notificationButton}>
             <Ionicons
               name="notifications"
               size={30}
@@ -50,7 +55,6 @@ export default function DashboardScreen() {
               style={{ marginTop: 20, marginRight: 10 }}
             />
           </TouchableOpacity>
-
           <TouchableOpacity style={styles.menuButton}>
             <Ionicons
               name="menu-sharp"
@@ -127,6 +131,8 @@ export default function DashboardScreen() {
         </View>
       </View>
 
+      
+
 
        {/* Divider Section */}
         <Text style={styles.sectionDivider}>Test your Abilities</Text>
@@ -165,8 +171,11 @@ export default function DashboardScreen() {
           </View>
         </TouchableOpacity>
       </View>
-
-      </ScrollView>
+    </ScrollView>
+      <Notification
+        visible={isNotificationVisible}
+        onClose={() => setNotificationVisible(false)}
+      />
     </SafeAreaView>
   );
 }
@@ -400,7 +409,7 @@ const styles = StyleSheet.create({
   },
   continueSmallButtonText: {
     color: 'white',
-    fontSize: 12,
+    fontSize: 14,
     fontWeight: '600',
   },
    cardImage: {
@@ -448,8 +457,10 @@ const styles = StyleSheet.create({
   },
   cardCourseRow: {
   flexDirection: 'row',
+  gap: 0,
   justifyContent: 'space-between',
   marginBottom: 10,
+  
 },
 
 cardCourse: {
@@ -483,7 +494,7 @@ cardCourseTitle: {
 },
 
 cardCourseDescription: {
-  fontSize: 11,
+  fontSize: 12,
   color: '#555',
 },
 
