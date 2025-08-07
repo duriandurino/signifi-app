@@ -1,9 +1,9 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import { useRouter } from 'expo-router';
+import React from 'react';
+import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 interface MiniGame {
   id: string;
@@ -16,26 +16,28 @@ interface MiniGame {
 
 const MINIGAMES: MiniGame[] = [
   {
-    id: 'wordle',
+    id: 'WordleScreen',
     name: 'Wordle',
     description: 'Guess the 5-letter word in 6 tries',
     icon: 'doc.text.fill',
     available: true,
-    route: '/minigames/wordle'
+    route: '../minigames/WordleScreen'
   },
   {
-    id: 'hangman',
-    name: 'Hangman',
+    id: 'HandmanScreen',
+    name: 'Handman',
     description: 'Guess the word letter by letter',
     icon: 'person.fill',
-    available: false
+    available: true,
+    route: '../minigames/HandmanScreen'
   },
   {
-    id: 'bingo',
+    id: 'FSLBingoScreen',
     name: 'Bingo',
     description: 'Match numbers and win!',
     icon: 'square.grid.3x3.fill',
-    available: false
+    available: true,
+    route: '../minigames/FSLBingoScreen'
   },
   {
     id: 'karaoke',
@@ -50,8 +52,8 @@ export default function MinigamesScreen() {
   const router = useRouter();
 
   const handleGamePress = (game: MiniGame) => {
-    if (game.available && game.id === 'wordle') {
-      router.push('/minigames/wordle');
+    if (game.available) {
+      router.push(game.route || "../minigames/"+game.id);
     }
   };
 
@@ -69,7 +71,7 @@ export default function MinigamesScreen() {
             disabled={!game.available}
           >
             <View style={styles.gameIcon}>
-              <IconSymbol size={40} name={game.icon} color={game.available ? '#007AFF' : '#999'} />
+              <IconSymbol size={40} name={game.icon as any} color={game.available ? '#007AFF' : '#999'} />
             </View>
             
             <View style={styles.gameInfo}>

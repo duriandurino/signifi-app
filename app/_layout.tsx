@@ -22,7 +22,9 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name="login" options={{ headerShown: false }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="minigames/wordle" options={{ headerShown: false }} />
+        <Stack.Screen name="minigames/WordleScreen" options={{ headerShown: false }} />
+        <Stack.Screen name="minigames/HandmanScreen" options={{ headerShown: false }} />
+        <Stack.Screen name="minigames/FSLBingoScreen" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />
