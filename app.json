@@ -8,6 +8,9 @@
     "scheme": "signifi",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "packagerOpts": {
+      "assetExts": ["tflite"]
+    },
     "ios": {
       "supportsTablet": true
     },
@@ -16,6 +19,9 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
+      "permissions": [
+        "CAMERA"
+      ],
       "edgeToEdgeEnabled": true,
       "package": "com.anonymous.SigniFi"
     },
@@ -35,10 +41,18 @@
           "backgroundColor": "#ffffff"
         }
       ],
-      "expo-font"
+      "expo-font",
+      "react-native-vision-camera",
+      "react-native-fast-tflite"
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "454859b9-08c4-4911-9cdf-2eac7d83266e"
+      }
     }
   }
 }
