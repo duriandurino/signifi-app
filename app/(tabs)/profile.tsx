@@ -1,15 +1,16 @@
+import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
+
 import React from 'react';
 import {
-  View,
-  Text,
-  StyleSheet,
   SafeAreaView,
-  TouchableOpacity,
   ScrollView,
-  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
 } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
-import { useRouter } from 'expo-router';
 
 export default function ProfileScreen() {
   const router = useRouter();
@@ -23,8 +24,13 @@ export default function ProfileScreen() {
       <StatusBar style="dark" />
       
       <ScrollView style={styles.content}>
+        {/* Header */}
         <View style={styles.header}>
-          <Text style={styles.title}>Profile</Text>
+          <TouchableOpacity>
+            <Ionicons name="arrow-back" size={24} color="#000" />
+          </TouchableOpacity>
+          <Text style={styles.headerTitle}>Profile</Text>
+          <View style={{ width: 24 }} />
         </View>
 
         <View style={styles.profileSection}>
@@ -71,7 +77,7 @@ export default function ProfileScreen() {
           
           <TouchableOpacity style={styles.menuItem}>
             <Text style={styles.menuIcon}>⚙️</Text>
-            <Text style={styles.menuText}>Settings</Text>
+            <Text style={styles.menuText}>Settings Profile</Text>
             <Text style={styles.menuArrow}>→</Text>
           </TouchableOpacity>
         </View>
@@ -94,12 +100,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   header: {
-    paddingTop: 20,
-    paddingBottom: 30,
+    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 20,
+    marginTop: 50,
+  },
+  headerTitle: {
+    fontSize: 18,
+    fontWeight: 700,
   },
   title: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 'bold',
     color: '#333',
   },
@@ -123,7 +135,7 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontFamily: 'Poppins-SemiBold',
     color: '#333',
     marginBottom: 4,
   },
@@ -195,7 +207,7 @@ const styles = StyleSheet.create({
     color: '#666',
   },
   logoutButton: {
-    backgroundColor: '#ff6b6b',
+    backgroundColor: '#4a5568',
     paddingVertical: 16,
     borderRadius: 12,
     alignItems: 'center',
@@ -204,6 +216,6 @@ const styles = StyleSheet.create({
   logoutText: {
     color: 'white',
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: '800',
   },
 }); 

@@ -25,16 +25,16 @@ export default function HandmanScreen() {
 
       if (nextWrong >= MAX_WRONG) {
         Alert.alert('You lost!', `The word was ${word}`, [
-          { text: 'Try Again', onPress: () => router.replace('/minigames/HandmanScreen') },
-          { text: 'Go Back', onPress: () => router.push('/') },
+          { text: 'Try Again', onPress: () => router.replace('./minigames/HandmanScreen') },
+          { text: 'Go Back', onPress: () => router.push('./') },
         ]);
       }
     } else {
       const allLettersFound = word.split('').every(c => guessed.includes(c) || c === letter);
       if (allLettersFound) {
         Alert.alert('🎉 You Won!', '', [
-          { text: 'Play Again', onPress: () => router.replace('/minigames/HandmanScreen') },
-          { text: 'Go Back', onPress: () => router.push('/') },
+          { text: 'Play Again', onPress: () => router.replace('./minigames/HandmanScreen') },
+          { text: 'Go Back', onPress: () => router.push('./') },
         ]);
       }
     }

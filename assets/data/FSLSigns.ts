@@ -1,7 +1,9 @@
 /* A minimal slice.  Put *all* 26 signs here when you have the assets */
+import { ImageSourcePropType } from 'react-native';
+
 export interface FSLSign {
   label: string;
-  src: ReturnType<typeof require>;
+  src: ImageSourcePropType;
 }
 
 export const FSL_SIGNS: FSLSign[] = [
