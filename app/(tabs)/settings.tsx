@@ -1,15 +1,17 @@
+import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
+
 import React, { useState } from 'react';
 import {
-  View,
-  Text,
-  StyleSheet,
   SafeAreaView,
-  TouchableOpacity,
   ScrollView,
+  StyleSheet,
   Switch,
+  Text,
+  TouchableOpacity,
+  View,
 } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
-import { useRouter } from 'expo-router';
 
 export default function SettingsScreen() {
   const router = useRouter();
@@ -26,8 +28,13 @@ export default function SettingsScreen() {
       <StatusBar style="dark" />
       
       <ScrollView style={styles.content}>
+        {/* Header */}
         <View style={styles.header}>
-          <Text style={styles.title}>Settings</Text>
+          <TouchableOpacity>
+            <Ionicons name="arrow-back" size={24} color="#000" />
+          </TouchableOpacity>
+          <Text style={styles.headerTitle}>Settings</Text>
+          <View style={{ width: 24 }} />
         </View>
 
         <View style={styles.section}>
@@ -146,10 +153,16 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 20,
   },
-  header: {
-    paddingTop: 20,
-    paddingBottom: 30,
+ header: {
+    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 20,
+    marginTop: 50,
+  },
+  headerTitle: {
+    fontSize: 20,
+    fontWeight: 700,
   },
   title: {
     fontSize: 24,
