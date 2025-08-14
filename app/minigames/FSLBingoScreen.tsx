@@ -107,7 +107,7 @@ export default function FSLBingoScreen() {
             clearTimeout(timerRef.current!);
             timerRef.current = null;
         Alert.alert('🎉 Bingo!', 'You covered a full line', [
-            { text: 'Play again', onPress: () => router.replace('/minigames/FSLBingoScreen') },
+            { text: 'Play again', onPress: () => router.replace('./minigames/FSLBingoScreen') },
         ]);
         } else if (statusArr.every(s => s !== 'unmarked')) {
 
@@ -115,7 +115,7 @@ export default function FSLBingoScreen() {
         timerRef.current = null;
             
         Alert.alert('Game Over', 'No bingo achieved.', [
-            { text: 'Try again', onPress: () => router.replace('/minigames/FSLBingoScreen') },
+            { text: 'Try again', onPress: () => router.replace('./minigames/FSLBingoScreen') },
         ]);
         }
     }, [cells]);

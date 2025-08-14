@@ -1,14 +1,13 @@
+import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import {
-  View,
-  Text,
-  StyleSheet,
   SafeAreaView,
-  TouchableOpacity,
   ScrollView,
-  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
 } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
 
 export default function CoursesScreen() {
   const courses = [
@@ -139,6 +138,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f8f9fa',
   },
   content: {
+    top: 30,
     flex: 1,
     paddingHorizontal: 20,
   },
