@@ -1,16 +1,18 @@
+import { MaterialIcons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
+
 import {
-  View,
+  Alert,
+  Image,
+  SafeAreaView,
+  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
-  StyleSheet,
-  SafeAreaView,
-  Alert,
-  Image,
+  View,
 } from 'react-native';
-import { useRouter } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
@@ -29,21 +31,24 @@ export default function LoginScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar style="light" />
+      <StatusBar style="dark" />
       
       <View style={styles.content}>
         <View style={styles.header}>
-          <Text style={styles.title}>Lets get</Text>
-          <Text style={styles.title}>you Sign In</Text>
+          <Text style={styles.title1}>Lets get</Text>
+          <Text style={styles.title2}>you Sign In</Text>
           <Image
-            source={require('@/assets/images/icon.png')}
-            style={styles.logo}
+            source={require('../assets/images/login.png')}
+            style={styles.login}
           />
         </View>
 
         <View style={styles.form}>
           <View style={styles.inputContainer}>
-            <Text style={styles.inputLabel}>📧 Enter Email</Text>
+             <View style={styles.labelRow}>
+                <MaterialIcons name="email" size={20} color="#666" style={styles.icon} />
+                <Text style={styles.inputLabel}>Enter Email</Text>
+             </View>
             <TextInput
               style={styles.input}
               value={email}
@@ -55,7 +60,10 @@ export default function LoginScreen() {
           </View>
 
           <View style={styles.inputContainer}>
-            <Text style={styles.inputLabel}>🔒 Enter Password</Text>
+            <View style={styles.labelRow}>
+                <MaterialIcons name="lock" size={20} color="#666" style={styles.icon} />
+                <Text style={styles.inputLabel}>Enter Password</Text>
+             </View>
             <View style={styles.passwordContainer}>
               <TextInput
                 style={styles.passwordInput}
@@ -64,12 +72,14 @@ export default function LoginScreen() {
                 placeholder="password"
                 secureTextEntry={!showPassword}
               />
-              <TouchableOpacity
-                onPress={() => setShowPassword(!showPassword)}
-                style={styles.eyeIcon}
-              >
-                <Text style={styles.eyeText}>{showPassword ? '👁️' : '👁️‍🗨️'}</Text>
+              <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+                <MaterialIcons
+                  name={showPassword ? 'visibility' : 'visibility-off'}
+                  size={24}
+                  color={showPassword ? '#364153' : '#999'}
+                />
               </TouchableOpacity>
+
             </View>
             <TouchableOpacity style={styles.forgotPassword}>
               <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
@@ -113,23 +123,30 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     paddingHorizontal: 24,
-    paddingTop: 60,
+    paddingTop: 150,
   },
   header: {
-    marginBottom: 60,
+    left: 10,
+    marginBottom: 40,
   },
-  title: {
+  title1: {
+    fontFamily: 'Poppins-Light',
+    fontSize: 32,
+    color: '#333',
+    lineHeight: 40,
+  },
+  title2: {
     fontSize: 32,
     fontWeight: 'bold',
     color: '#333',
     lineHeight: 40,
   },
-  logo: {
-    width: 80,
-    height: 80,
+  login: {
+    width: 150,
+    height: 150,
     position: 'absolute',
     right: 20,
-    top: 0,
+    top: -35,
   },
   form: {
     flex: 1,
@@ -171,7 +188,7 @@ const styles = StyleSheet.create({
   },
   forgotPassword: {
     alignSelf: 'flex-end',
-    marginTop: 8,
+    marginTop: 10,
   },
   forgotPasswordText: {
     color: '#666',
@@ -180,19 +197,19 @@ const styles = StyleSheet.create({
   loginButton: {
     backgroundColor: '#4a5568',
     paddingVertical: 16,
-    borderRadius: 8,
+    borderRadius: 30,
     alignItems: 'center',
     marginTop: 20,
     marginBottom: 20,
   },
   loginButtonText: {
     color: 'white',
-    fontSize: 18,
-    fontWeight: '600',
+    fontSize: 15,
+    fontWeight: 900,
   },
   divider: {
     alignItems: 'center',
-    marginVertical: 20,
+    marginVertical: 15,
   },
   dividerText: {
     color: '#666',
@@ -231,4 +248,14 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '600',
   },
+  labelRow: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  marginBottom: 4, // optional spacing
+},
+icon: {
+  marginRight: 6,
+  marginBottom: 5,
+},
+
 }); 
